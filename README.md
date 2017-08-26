@@ -18,7 +18,7 @@ For more information please read:
 
 To build the app, first clone the repository and then run:
 
-`ant build`
+`ant all`
 
 ## Usage
 
@@ -26,11 +26,14 @@ If you don't have the private key of a CA trusted by your system's JRE, you'll h
 Let's say CA_CERT.pem is your proxy's CA certificate.
 
 `$cp /etc/ssl/certs/java/cacerts .`
+or if you don't have one yet
+`keytool -genkey -alias mydomain -keyalg RSA -keystore cacerts -keysize 2048`
 
-`$keytool -import -trustcacerts -alias ikozCA -file CA_CERT.pem -keystore cacerts -storepass changeit`
+`$keytool -import -trustcacerts -alias ikozCA -file <path to exploit repo>/CA_CERT.pem -keystore cacerts -storepass <the password from above>`
 
 Then start simple-client using the following parameters to connect through a local proxy
 
 `$java -DproxyHost=127.0.0.1 -DproxyPort=8080 -Djavax.net.ssl.trustStore=cacerts -jar certPinningVulnerableOkHttp.jar`
+Note: omit the proxyPort if you used default 443.
 
 John Kozyrakis

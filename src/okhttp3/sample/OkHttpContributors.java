@@ -24,7 +24,7 @@ public class OkHttpContributors {
     public static void main(String... args) throws Exception {
         OkHttpClient client = new OkHttpClient.Builder()
             .certificatePinner(new CertificatePinner.Builder()
-                    .add("api.github.com", "sha1/3J8cZIediMp9DM5k0Y0jLRCVqhw=")
+                    .add("api.github.com", "sha1/Ew63sMG3dUCJDwtkIGtTpdIqqAc=")
                     .build())
             .build();
 
